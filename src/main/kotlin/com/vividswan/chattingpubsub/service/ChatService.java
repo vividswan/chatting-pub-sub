@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import org.springframework.data.redis.connection.Message;
 import org.springframework.data.redis.connection.MessageListener;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.listener.ChannelTopic;
 import org.springframework.data.redis.listener.RedisMessageListenerContainer;
 import org.springframework.stereotype.Service;
@@ -15,6 +16,7 @@ import lombok.RequiredArgsConstructor;
 public class ChatService implements MessageListener {
 
 	private final RedisMessageListenerContainer container;
+	private final RedisTemplate redisTemplate;
 
 	public void enterChatRoom(String roomName) {
 		container.addMessageListener(this, new ChannelTopic(roomName));
