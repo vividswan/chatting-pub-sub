@@ -28,7 +28,9 @@ public class ChatService implements MessageListener {
 				System.out.println("Quit");
 				break;
 			}
+			redisTemplate.convertAndSend(roomName, line);
 		}
+		container.removeMessageListener(this);
 	}
 
 	@Override
