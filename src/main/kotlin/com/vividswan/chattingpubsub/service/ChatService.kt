@@ -11,7 +11,7 @@ import java.util.Scanner
 @Service
 class ChatService(
     private val container: RedisMessageListenerContainer,
-    private val redisTemplate: RedisTemplate<String, String>
+    private val redisTemplate: RedisTemplate<String, String>,
 ) : MessageListener {
 
     fun enterChatRoom(roomName: String) {
@@ -30,6 +30,6 @@ class ChatService(
     }
 
     override fun onMessage(message: Message, pattern: ByteArray?) {
-        println("message: ${message.toString()}")
+        println("message: $message")
     }
 }
